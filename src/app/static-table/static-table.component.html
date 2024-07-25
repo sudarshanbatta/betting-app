@@ -1,0 +1,56 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-header-section text-center">
+                <div class="date-time mt-2">
+                    {{dateTime | date:'dd-MMM-yyyy HH:mm'}}
+                </div>
+                <div class="match-secion mt-3">
+                    <p><b>{{selectedMatch?.link_name}}</b></p>
+                </div>
+            </div>
+            <table class="table text-white text-center" border="1">
+                <thead>
+                    <th>S.no</th>
+                    <th>Radar</th>
+                    <th>Falcon</th>
+                    <th>Sin Limit</th>
+                    <th>Sin Risk</th>
+                    <th>Action</th>
+                </thead>
+                <tbody *ngIf="selectedMatch && selectedMatch?.matchData; else noData">
+                    <tr *ngFor="let item of selectedMatch?.matchData; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item?.radar}}</td>
+                        <td>
+                            <input #falconInput class="form-control input-width" [value]="item.falcon"
+                                (input)="onInput(i, $event.target.value, 'falcon')" (keydown)="onKeyDown($event,i)"
+                                [ngStyle]="{'background-color': item.falconEdited ? 'lightcoral' : 'lightgray'}" />
+                        </td>
+                        <td>
+                            <input #sinLimitInput  class="form-control" [value]="item.sinLimit" (keydown)="onKeyDown($event, i)"
+                                (input)="onInput(i, $event.target.value, 'sinLimit')"
+                                [ngStyle]="{'background': getProgressBarBackground(item.sinRisk, item.sinLimit)}" />
+                        </td>
+                        <td>{{item?.sinRisk}}</td>
+                        <td><button
+                            (click)="setActiveIndex(i)"
+                            [ngStyle]="{'background-color': getButtonColor(i)}"
+                            class="color-button">
+                            <i class="fas fa-edit"></i>
+                          </button></td>
+                    </tr>
+                </tbody>
+                <ng-template #noData>
+                    <tr>
+                        <td colspan="6">
+                            <img src="../../assets/images/nodata.svg" height="300px" width="200px"
+                                alt="No data found image">
+                            <p>Please Select Match</p>
+                        </td>
+                    </tr>
+                </ng-template>
+            </table>
+        </div>
+    </div>
+</div>
