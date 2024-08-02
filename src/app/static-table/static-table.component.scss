@@ -1,11 +1,48 @@
 .table-header-section{
     padding: 5px;
-    background-color: #fff;
     border-radius: 20px 20px 0 0;
+    color: #fff;
 }
-table{
-    border-color: #fff;
+td{
+    background-color: #fff;
+    width: 60px;
 }
-.input-width{
-    width: 80px;
+.table td, .table th{
+    padding: 0;
 }
+.form-control:focus {
+    box-shadow:none;
+    border: none;
+    outline:none;
+}
+.form-control{
+    border-radius:0;
+}
+.item-radar{
+    background-color: hsl(177.27deg 40.74% 89.41%);
+}
+.table-content{
+    margin-left: -20px;
+    width: 105%;
+    background-color: hsl(197.87deg 67.14% 27.45%);
+    height: 100px;
+}
+.breadcrubs{
+    margin-left: 35px;
+    mat-icon{
+        font-size: 12px;
+    }
+}
+.types{
+    display: flex;
+    justify-content: left;
+    margin-left: 30px;
+    span{
+      background-color: #d4e6eb;
+      color: #000;
+      margin: 0 5px;
+      padding: 0 5px;
+      border-radius: 5px 5px 0 0;
+      font-size: 12px;
+    }
+  }

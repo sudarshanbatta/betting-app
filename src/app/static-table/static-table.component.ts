@@ -94,7 +94,7 @@ export class StaticTableComponent implements OnInit {
     } else if (percentage <= 75) {
       color = '#ffeb3b'; // Yellow
     } else {
-      color = '#f44336'; // Red
+      color = 'rgb(241 82 71)'; // Red
     }
     return `linear-gradient(to right, ${color} ${percentage}%, #f1f1f1 ${percentage}%)`;
   }

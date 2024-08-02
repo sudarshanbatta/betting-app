@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class MainContentComponent implements OnInit {
   openSidebar: boolean = true;
   matchDetails:any;
+  isOn:boolean=true;
+  today = new Date();
   constructor() { }
 
 
@@ -276,4 +278,7 @@ export class MainContentComponent implements OnInit {
     this.matchDetails = data;
   }
 
+  isBettingOn(){
+    this.isOn = !this.isOn;
+  }
 }

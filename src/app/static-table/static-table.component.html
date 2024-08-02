@@ -1,44 +1,53 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid px-0">
     <div class="row">
-        <div class="col-md-12">
-            <div class="table-header-section text-center">
-                <div class="date-time mt-2">
-                    {{dateTime | date:'dd-MMM-yyyy HH:mm'}}
+        <div class="col-md-12 px-0 table-content">
+            <div class="table-header-section">
+                <div class="breadcrubs">SOCCER <mat-icon>play_arrow</mat-icon>{{selectedMatch?.link_name}}</div>
+                <div class=" text-center">
+                    <div class="date-time mt-2">
+                        {{dateTime | date:'dd-MMM-yyyy HH:mm'}}
+                    </div>
+                    <div class="match-secion mt-3">
+                        <h3><b>{{selectedMatch?.link_name}}</b></h3>
+                    </div>
                 </div>
-                <div class="match-secion mt-3">
-                    <p><b>{{selectedMatch?.link_name}}</b></p>
-                </div>
+              
             </div>
-            <table class="table text-white text-center" border="1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 px-0">
+           
+            <table class="table text-center" border="1">
                 <thead>
-                    <th>S.no</th>
-                    <th>Radar</th>
-                    <th>Falcon</th>
-                    <th>Sin Limit</th>
-                    <th>Sin Risk</th>
-                    <th>Action</th>
+                    <th style="padding: 10px;">S.no</th>
+                    <th style="padding: 10px;">Radar</th>
+                    <th style="padding: 10px;">Falcon</th>
+                    <th style="padding: 10px;">Sin Limit</th>
+                    <th style="padding: 10px;">Sin Risk</th>
+                    <th style="padding: 10px;">Action</th>
                 </thead>
                 <tbody *ngIf="selectedMatch && selectedMatch?.matchData; else noData">
                     <tr *ngFor="let item of selectedMatch?.matchData; let i = index">
                         <td>{{i+1}}</td>
-                        <td>{{item?.radar}}</td>
-                        <td>
-                            <input #falconInput class="form-control input-width" [value]="item.falcon"
+                        <td class="item-radar">{{item?.radar}}</td>
+                        <td >
+                            <input #falconInput class="form-control item-falcon input-width" [value]="item.falcon"
                                 (input)="onInput(i, $event.target.value, 'falcon')" (keydown)="onKeyDown($event,i)"
                                 [ngStyle]="{'background-color': item.falconEdited ? 'lightcoral' : 'lightgray'}" />
                         </td>
-                        <td>
+                        <td >
                             <input #sinLimitInput  class="form-control" [value]="item.sinLimit" (keydown)="onKeyDown($event, i)"
                                 (input)="onInput(i, $event.target.value, 'sinLimit')"
                                 [ngStyle]="{'background': getProgressBarBackground(item.sinRisk, item.sinLimit)}" />
                         </td>
-                        <td>{{item?.sinRisk}}</td>
-                        <td><button
-                            (click)="setActiveIndex(i)"
-                            [ngStyle]="{'background-color': getButtonColor(i)}"
-                            class="color-button">
-                            <i class="fas fa-edit"></i>
-                          </button></td>
+                        <td >{{item?.sinRisk}}</td>
+                        <td class="icons-section">
+                            <span class="mr-2"><mat-icon>backspace</mat-icon></span>
+                            <span class="mr-2"><mat-icon>forum</mat-icon></span>
+                            <span class="mr-2"><mat-icon>email</mat-icon></span>
+                            <span class="mr-2"><mat-icon>chat_bubble</mat-icon></span>
+                        </td>
                     </tr>
                 </tbody>
                 <ng-template #noData>

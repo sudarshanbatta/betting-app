@@ -1,11 +1,43 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 px-0">
             <div class="sidebar">
-                <div class="side-details">
-                  <h5>Soccer</h5>
+              <div class="on-off-section pb-4">
+                <p class="ml-4"><span class="text-white">BETTING </span> <span class="on-off-text">{{isOn ? 'ON' :'OFF'}}</span> <span>
+                  <mat-slide-toggle class="ml-3" (click)="isBettingOn()">
+                  </mat-slide-toggle>
+                </span>
+              </p>
+              <p class="date-time ml-4">
+                Feed: {{today | date:'dd-mm-yyy HH:mm'}}<mat-icon>check_circle</mat-icon>
+              </p>
+              </div>
+              <div class="date-range px-2">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Enter a date range</mat-label>
+                  <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate placeholder="Start date">
+                    <input matEndDate placeholder="End date">
+                  </mat-date-range-input>
+                  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+              </div>
+              <div class="types mb-4">
+                <span>Neutral</span>
+                <span>Time Change</span>
+                <span>Special</span>
+              </div>
+                <div class="side-details d-flex justify-content-between">
+                  <div class="d-flex">
+                    <span><mat-icon>cloud_circle</mat-icon></span><h2 class="mb-0">Soccer</h2>
+                  </div>
+                  <div>
+                    <mat-icon>assessment</mat-icon>
+                  </div>
                 </div>
-                <ul class="nav-links p-0 mt-5" id="nav-links">
+                <ul class="nav-links p-0" id="nav-links">
                   <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
                     <div *ngIf="item.sub_menu.length == 0" class="dropdown-title">
                       <a [routerLink]="[item.link]">
@@ -30,7 +62,7 @@
                 </ul>
               </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 px-0">
             <app-static-table [selectedMatch]="matchDetails"></app-static-table>
         </div>
     </div>

@@ -5,10 +5,19 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 260px;
-
+    background-color: #ced3d4;
     z-index: 100;
-    transition: all 0.5s ease;
+    .on-off-section{
+      font-size: 14px;
+      font-weight: 500;
+      background-color: #3a7589;
+      .date-time{
+        color: #44be21;
+      }
+    }
+    .on-off-text{
+      color: rgb(255 210 115);
+    }
   }
   
   .sidebar.sidebar-close {
@@ -17,8 +26,10 @@
   
   .sidebar .side-details {
     width: 100%;
-    padding: 20px 10px 10px 55px;
+    padding: 10px;
     color: #fff;
+    align-items: center;
+    background-color: hsl(200.53deg 31.15% 76.08%);
   }
   
 
@@ -29,6 +40,7 @@
     width: 360px;
     padding-bottom: 150px;
     overflow: auto;
+    background-color: #d4e6eb;
   }
   
   .sidebar .nav-links::-webkit-scrollbar {
@@ -42,6 +54,11 @@
   .sidebar .nav-links > li {
     position: relative;
     width: fit-content;
+    width: 100%;
+    background-color: hsl(193.04deg 36.51% 87.65%);
+    color: #000;
+    border-bottom: 1px solid #fff
+
   }
   
 
@@ -65,13 +82,13 @@
   
   .sidebar .nav-links li i {
     height: 50px;
-    min-width: 60px;
     text-align: center;
     line-height: 50px;
     color: #0696fe;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    padding-left: 10px;
   }
   
   .sidebar .nav-links li:hover i, 
@@ -93,23 +110,19 @@
   
   /* Link Name */
   .sidebar .nav-links li a .link_name {
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
+    font-size: 14px;
+    color: #000;
     transition: all 0.4s ease;
     cursor: pointer;
   }
   
   .sidebar .nav-links li:hover a .link_name, 
   .sidebar .nav-links li.active a .link_name {
-    color: white;
+    color: #000;
   }
   
   /* Sub Menu */
   .sidebar .nav-links li .sub-menu {
-    padding: 6px 6px 14px 70px;
-    /* margin-top: -10px; */
-    // background: white;
     display: none;
     transition: all 0.4s ease;
   }
@@ -137,7 +150,7 @@
   
   .sidebar .nav-links li .sub-menu li:hover a, 
   .sidebar .nav-links li .sub-menu li.active a {
-    color: white;
+    color: #000;
   }
   
   .sidebar.sidebar-close .nav-links li .sub-menu {
@@ -171,7 +184,7 @@
   }
   
   .sidebar.sidebar-close .nav-links li .sub-menu .link_name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     /* opacity: 1; */
     display: block;
@@ -194,7 +207,7 @@
   
   .sidebar .nav-links li .sub-menu.blank {
     pointer-events: auto;
-    /* padding: 3px 20px 6px 16px; */
+    /* padding: 3px 20px 6px 14px; */
     opacity: 0;
     pointer-events: none;
   }
@@ -215,4 +228,27 @@
         display: none;
     }
   }
-  
+  ::ng-deep .mat-form-field-infix {
+    display: flex !important;
+    padding: 0 !important;
+  }
+  ::ng-deep .mat-form-field-subscript-wrapper {
+    display: none;
+  }
+  ::ng-deep .mat-form-field-wrapper{
+    padding: 0;
+  }
+  .types{
+    display: flex;
+    justify-content: center;
+
+    span{
+      background-color: #d4e6eb;
+      color: #000;
+      margin: 0 5px;
+      padding: 0 5px;
+      border-radius: 0 0 5px 5px;
+      font-size: 12px;
+      margin-top: -3px;
+    }
+  }
