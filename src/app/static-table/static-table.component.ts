@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-static-table',
@@ -13,10 +14,15 @@ export class StaticTableComponent implements OnInit {
   @ViewChildren('sinLimitInput') sinLimitInputs: QueryList<ElementRef>;
   buttonColor: string = '#fff';
   activeIndex: number | null = null; 
-  constructor() { }
+  secondsLeft = 10;
+  isAnimating = false;
+  private countdownSubscription: Subscription;
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.startCountdown();
     this.dateTime = new Date();
+   
   }
   onKeyDown(event: KeyboardEvent, index: number): void {
     if (event.key === 'Escape') {
@@ -109,4 +115,28 @@ export class StaticTableComponent implements OnInit {
     return 'lightgray'; 
   }
 
+  ngOnDestroy() {
+    if (this.countdownSubscription) {
+      this.countdownSubscription.unsubscribe();
+    }
+  }
+
+  startCountdown() {
+    this.isAnimating = true;
+    this.countdownSubscription = interval(1000).subscribe((value) => {
+      this.secondsLeft = 10 - (value % 10);
+      console.log(this.secondsLeft)
+      this.cdRef.detectChanges();
+      if (this.secondsLeft === 0) {
+        this.resetAnimation();
+      }
+    });
+  }
+
+  resetAnimation() {
+    this.isAnimating = false;
+    setTimeout(() => {
+      this.isAnimating = true;
+    }, 50);  // Small delay to restart animation
+  }
 }

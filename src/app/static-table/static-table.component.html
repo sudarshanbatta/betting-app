@@ -2,15 +2,25 @@
     <div class="row">
         <div class="col-md-12 px-0 table-content">
             <div class="table-header-section">
-                <div class="breadcrubs">SOCCER <mat-icon>play_arrow</mat-icon>{{selectedMatch?.link_name}}</div>
+                <div class="breadcrubs"><div>SOCCER <mat-icon>play_arrow</mat-icon>{{selectedMatch?.link_name}}</div>
+                    <div class="timer">
+                        <div class="progress-container">
+                            <div class="progress-bar" [ngClass]="{ 'animate': isAnimating }">
+                            </div>
+                          </div>
+                          <div class="count-timer text-left">Refreshing in {{ secondsLeft}} sec</div>
+
+                    </div>
+                </div>
                 <div class=" text-center">
                     <div class="date-time mt-2">
                         {{dateTime | date:'dd-MMM-yyyy HH:mm'}}
                     </div>
-                    <div class="match-secion mt-3">
+                    <div class="match-secion">
                         <h3><b>{{selectedMatch?.link_name}}</b></h3>
                     </div>
                 </div>
+             
               
             </div>
         </div>
@@ -19,13 +29,25 @@
         <div class="col-md-12 px-0">
            
             <table class="table text-center" border="1">
+                <thead class="custom-th">
+                    <th style="padding: 10px;border-bottom: 1px solid;background-color: #dee3e4;" colspan="5">Match PnL</th>
+                    <th class="top-th" style="padding: 10px;">300</th>
+                    <th class="top-th" style="padding: 10px;">350</th>
+                    <th class="top-th" style="padding: 10px;">500</th>
+                    <th class="top-th" style="padding: 10px;">1000</th>
+                    <th class="top-th" style="padding: 10px;">0</th>
+                </thead>
                 <thead>
                     <th style="padding: 10px;">S.no</th>
                     <th style="padding: 10px;">Radar</th>
                     <th style="padding: 10px;">Falcon</th>
                     <th style="padding: 10px;">Sin Limit</th>
                     <th style="padding: 10px;">Sin Risk</th>
-                    <th style="padding: 10px;">Action</th>
+                    <th style="padding: 10px;">Sin Bet</th>
+                    <th style="padding: 10px;">Stake</th>
+                    <th style="padding: 10px;">P&L</th>
+                    <th style="padding: 10px;">Multi Bet</th>
+                    <th style="padding: 10px;">Multi Dist</th>
                 </thead>
                 <tbody *ngIf="selectedMatch && selectedMatch?.matchData; else noData">
                     <tr *ngFor="let item of selectedMatch?.matchData; let i = index">
@@ -42,17 +64,21 @@
                                 [ngStyle]="{'background': getProgressBarBackground(item.sinRisk, item.sinLimit)}" />
                         </td>
                         <td >{{item?.sinRisk}}</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>5</td>
+                        <td>5</td>
                         <td class="icons-section">
-                            <span class="mr-2"><mat-icon>backspace</mat-icon></span>
-                            <span class="mr-2"><mat-icon>forum</mat-icon></span>
-                            <span class="mr-2"><mat-icon>email</mat-icon></span>
-                            <span class="mr-2"><mat-icon>chat_bubble</mat-icon></span>
+                            <span><mat-icon>backspace</mat-icon></span>
+                            <span><mat-icon>forum</mat-icon></span>
+                            <span><mat-icon>email</mat-icon></span>
+                            <span><mat-icon>chat_bubble</mat-icon></span>
                         </td>
                     </tr>
                 </tbody>
                 <ng-template #noData>
                     <tr>
-                        <td colspan="6">
+                        <td colspan="10">
                             <img src="../../assets/images/nodata.svg" height="300px" width="200px"
                                 alt="No data found image">
                             <p>Please Select Match</p>

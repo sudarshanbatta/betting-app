@@ -1,15 +1,15 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 px-0">
+        <div class="col-md-2 px-0">
             <div class="sidebar">
-              <div class="on-off-section pb-4">
+              <div class="on-off-section pb-4 pt-3">
                 <p class="ml-4"><span class="text-white">BETTING </span> <span class="on-off-text">{{isOn ? 'ON' :'OFF'}}</span> <span>
                   <mat-slide-toggle class="ml-3" (click)="isBettingOn()">
                   </mat-slide-toggle>
                 </span>
               </p>
               <p class="date-time ml-4">
-                Feed: {{today | date:'dd-mm-yyy HH:mm'}}<mat-icon>check_circle</mat-icon>
+                Feed: {{today | date:'dd-MM-yyy HH:mm'}}<mat-icon>check_circle</mat-icon>
               </p>
               </div>
               <div class="date-range px-2">
@@ -29,9 +29,18 @@
                 <span>Time Change</span>
                 <span>Special</span>
               </div>
+              <div>
+               
+              </div>
+              <div class="p-1">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle checked value="team">Team</mat-button-toggle>
+                  <mat-button-toggle value="book">Book</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
                 <div class="side-details d-flex justify-content-between">
                   <div class="d-flex">
-                    <span><mat-icon>cloud_circle</mat-icon></span><h2 class="mb-0">Soccer</h2>
+                    <span><mat-icon class="mt-1">cloud_circle</mat-icon></span><h2 class="mb-0">Soccer</h2>
                   </div>
                   <div>
                     <mat-icon>assessment</mat-icon>
@@ -62,7 +71,7 @@
                 </ul>
               </div>
         </div>
-        <div class="col-md-9 px-0">
+        <div class="col-md-10 px-0">
             <app-static-table [selectedMatch]="matchDetails"></app-static-table>
         </div>
     </div>

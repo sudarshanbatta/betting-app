@@ -5,6 +5,7 @@
     top: 0;
     left: 0;
     height: 100%;
+    width: 16%;
     background-color: #ced3d4;
     z-index: 100;
     .on-off-section{
@@ -12,7 +13,10 @@
       font-weight: 500;
       background-color: #3a7589;
       .date-time{
-        color: #44be21;
+        color: rgb(157 253 118);
+        mat-icon{
+          font-size: 12px;
+        }
       }
     }
     .on-off-text{
@@ -27,7 +31,7 @@
   .sidebar .side-details {
     width: 100%;
     padding: 10px;
-    color: #fff;
+    color: #3a7589;
     align-items: center;
     background-color: hsl(200.53deg 31.15% 76.08%);
   }
@@ -37,7 +41,7 @@
   
   .sidebar .nav-links {
     height: 100%;
-    width: 360px;
+    // width: 360px;
     padding-bottom: 150px;
     overflow: auto;
     background-color: #d4e6eb;
@@ -110,7 +114,7 @@
   
   /* Link Name */
   .sidebar .nav-links li a .link_name {
-    font-size: 14px;
+    font-size: 12px;
     color: #000;
     transition: all 0.4s ease;
     cursor: pointer;
@@ -119,6 +123,7 @@
   .sidebar .nav-links li:hover a .link_name, 
   .sidebar .nav-links li.active a .link_name {
     color: #000;
+    font-weight: 500;
   }
   
   /* Sub Menu */
@@ -133,14 +138,14 @@
   
   .sidebar .nav-links li .sub-menu a {
     color: #0696fe;
-    font-size: 15px;
+    font-size: 12px;
     padding: 7px 0;
     white-space: nowrap;
     transition: all 0.3s ease;
   }
   
   .sidebar .nav-links li .sub-menu li {
-    padding-left: 10px;
+    // padding-left: 10px;
   }
   
   // .sidebar .nav-links li .sub-menu li:hover, 
@@ -252,3 +257,29 @@
       margin-top: -3px;
     }
   }
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: rgb(255 210 115);
+}
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #175975;
+}
+::ng-deep .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard{
+  width: 100%;
+  background: #175975;
+  padding: 5px;
+  border-radius: 8px;
+}
+::ng-deep .mat-button-toggle{
+  width: 50%;
+  height: 25px;
+  background-color: transparent;
+  color: #fff;
+}
+::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 25px;
+  font-size: 12px;
+}
+::ng-deep .mat-button-toggle-checked{
+  background-color: rgb(99 195 163);
+
+}

@@ -22,15 +22,23 @@ td{
     background-color: hsl(177.27deg 40.74% 89.41%);
 }
 .table-content{
-    margin-left: -20px;
+    // margin-left: -20px;
     width: 105%;
     background-color: hsl(197.87deg 67.14% 27.45%);
-    height: 100px;
+    height: 117px;
 }
 .breadcrubs{
     margin-left: 35px;
+    display: flex;
+    justify-content: space-between;
     mat-icon{
         font-size: 12px;
+    }
+}
+.icons-section{
+    mat-icon{
+        font-size: 12px;
+        margin-top: 10px;
     }
 }
 .types{
@@ -46,3 +54,54 @@ td{
       font-size: 12px;
     }
   }
+  input{
+    text-align: center;
+  }
+  
+  .progress-container {
+    width: 85%;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: rgb(133 245 175);
+    width: 100%;
+    transform-origin: left;
+  }
+  
+  .animate {
+    animation: countdown 10s linear infinite;
+  }
+  
+  @keyframes countdown {
+    0% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
+  }
+  
+  .timer {
+    font-size: 18px;
+    text-align: center;
+    width: 150px;
+    .count-timer{
+        font-size: 12px;
+    }
+  }
+  .custom-th{
+    background-color: #fff;
+    border: none;
+    .top-th{
+        background-color: #b6bbbc;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    
+    }
+}
